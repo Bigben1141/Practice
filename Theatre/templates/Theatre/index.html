@@ -1,0 +1,19 @@
+{% extends 'Theatre/base.html' %}
+
+{%block content%}
+<h1>{{title}}</h1>
+<ul class="list-articles">
+
+    {% for p in actors %}
+    <li>
+        {% if p.Photo %}
+        <p><img class="img-article-left thumb" src="{{p.Photo.url }}"></p>
+        {% endif %}
+        <H3> <a name="{{p.Surname}}"> </a>{{p.Surname }} {{p.Name }} </H3>
+        <p> {{p.Bio }} </p>
+        <div class="clear"></div>
+
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
