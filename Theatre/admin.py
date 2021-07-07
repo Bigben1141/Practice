@@ -4,3 +4,7 @@ from django.contrib import admin
 from .models import *
 
 admin.site.register(Actors)
+admin.site.register(Plays)
+admin.site.register(Amplua)
+admin.site.register(Staging)
+admin.site.register(Tickets)

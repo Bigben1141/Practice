@@ -1,6 +1,9 @@
 {% load static %}
 {% load Theatre_tags %}
 {% get_actors as actors %}
+{% get_plays as plays%}
+{% get_roles as roles%}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,50 +20,26 @@
 {% block mainmenu %}
 		<div class="header">
 			<ul id="mainmenu" class="mainmenu">
-			<li class="logo"><a href="#"><div class="logo"></div></a></li>
+			<li class="logo"><a href="{% url 'home' %}"><div class="logo"></div></a></li>
 {% for m in menu %}
-	{% if not forloop.last %}
-			<li><a href="#">{{m.title }}</a></li>
-	{% else %}
-			<li class="last"><a href="#">{{m.title }}</a></li>
-	{% endif %}
+
+			<li><a href="{% url m.url_name %}">{{m.title }}</a></li>
+
+
 {% endfor %}
+				{% if request.user.is_authenticated %}
+				<li class="last"> {{user.username}} <a href="{% url 'logout' %}">|  Выйти </a> </li>
+				{% else %}
+				<li class="last"><a href="{% url 'register' %}">Регистрация</a> | <a href="{% url 'login' %}">Войти</a></li>
+				{% endif %}
 			</ul>
 			<div class="clear"></div>
 		</div>
 {% endblock mainmenu %}
 
-
-<table class="table-content" border=0 cellpadding="0" cellspacing="0">
-<tr>
-<!-- Sidebar слева -->
-	<td valign="top" class="left-chapters">
-	<ul id="leftchapters">
-		<li class="selected">Наши актеры</li>
-
-		{% for c in actors %}
-
-		<li><a href="#{{c.Surname}}"> {{c.Surname}} {{c.Name}} </a></li>
-
-
-		{% endfor %}
-
-	</ul>
-</td>
-<!-- Конец Sidebar'а -->
-<td valign="top" class="content">
-	<!-- Хлебные крошки -->
-	{% block breadcrumbs %}
-	{% endblock %}
-
-<!-- Блок контента -->
-	<div class="content-text">
 {% block content %}
 {% endblock %}
-	</div>
-<!-- Конец блока контента -->
 
-</td></tr></table>
 </td></tr>
 <!-- Footer -->
 <tr><td valign=top>

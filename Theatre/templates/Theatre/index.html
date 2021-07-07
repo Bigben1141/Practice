@@ -1,19 +1,47 @@
 {% extends 'Theatre/base.html' %}
-
-{%block content%}
 <h1>{{title}}</h1>
+{% block content %}
+<table class="table-content" border=0 cellpadding="0" cellspacing="0">
+<tr>
+<!-- Sidebar слева -->
+	<td valign="top" class="left-chapters">
+	<ul id="leftchapters">
+		<li class="selected">Пьесы</li>
+
+		{% for c in plays %}
+		<li><a href="#{{c.Title}}"> {{c.Title}} </a></li>
+		{% endfor %}
+
+	</ul>
+</td>
+<!-- Конец Sidebar'а -->
+<td valign="top" class="content">
+	<!-- Хлебные крошки -->
+	{% block breadcrumbs %}
+	{% endblock %}
+
+<!-- Блок контента -->
+	<div class="content-text">
 <ul class="list-articles">
 
-    {% for p in actors %}
+	{% for p in plays %}
     <li>
-        {% if p.Photo %}
-        <p><img class="img-article-left thumb" src="{{p.Photo.url }}"></p>
+        {% if p.Picture %}
+        <p><img class="img-article-left thumb" src="{{p.Picture.url }}"></p>
         {% endif %}
-        <H3> <a name="{{p.Surname}}"> </a>{{p.Surname }} {{p.Name }} </H3>
-        <p> {{p.Bio }} </p>
+
+        <H3> <a name="{{p.Title}}"> </a>{{p.Title }} {{ r.Actor}}   </H3>
+        <p> {{p.About }} </p>
         <div class="clear"></div>
 
     </li>
-    {% endfor %}
+	{% endfor %}
+
 </ul>
+	</div>
+<!-- Конец блока контента -->
+
+</td></tr></table>
+
+
 {% endblock %}

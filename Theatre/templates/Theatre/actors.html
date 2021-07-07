@@ -1,0 +1,48 @@
+{% extends 'Theatre/base.html' %}
+<h1>{{title}}</h1>
+{% block content %}
+<table class="table-content" border=0 cellpadding="0" cellspacing="0">
+<tr>
+<!-- Sidebar слева -->
+	<td valign="top" class="left-chapters">
+	<ul id="leftchapters">
+		<li class="selected">Наши актеры</li>
+
+		{% for c in actors %}
+
+		<li><a href="#{{c.Surname}}"> {{c.Surname}} {{c.Name}} </a></li>
+
+
+		{% endfor %}
+
+	</ul>
+</td>
+<!-- Конец Sidebar'а -->
+<td valign="top" class="content">
+	<!-- Хлебные крошки -->
+	{% block breadcrumbs %}
+	{% endblock %}
+
+<!-- Блок контента -->
+	<div class="content-text">
+<ul class="list-articles">
+
+    {% for p in actors %}
+    <li>
+        {% if p.Photo %}
+        <p><img class="img-article-left thumb" src="{{p.Photo.url }}"></p>
+        {% endif %}
+        <H3> <a name="{{p.Surname}}"> </a>{{p.Surname }} {{p.Name }} </H3>
+        <p> {{p.Bio }} </p>
+        <div class="clear"></div>
+
+    </li>
+    {% endfor %}
+</ul>
+	</div>
+<!-- Конец блока контента -->
+
+</td></tr></table>
+
+
+{% endblock %}
