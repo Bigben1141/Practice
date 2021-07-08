@@ -76,14 +76,14 @@ ul.list-articles li {
 .clear {clear: both;}
 
 .header {
-	background: #3F4137;
+	background: #424e4e;
 	height: 60px;
 }
 
 .logo {
 	background: url('../images/logo.png') no-repeat 10px 5px;
-	width: 70px;
-	height: 60px;
+	width: 100px;
+	height: 80px;
 }
 
 ul.mainmenu {
@@ -91,7 +91,7 @@ ul.mainmenu {
 	margin: 0;
 	padding: 0;
 	height: 60px;
-	color: #fdc073;
+	color: #f0ffff;
 	font-size: 20px;
 	overflow: hidden;
 }
@@ -103,11 +103,11 @@ ul.mainmenu li.logo {margin: 0;}
 ul.mainmenu li.last {float: right;}
 
 ul.mainmenu li a {
-	color: #fdc073;
+	color: #f0ffff;
 	text-decoration: none;
 }
 ul.mainmenu li a:hover {
-	color: #FDA83D;
+	color: #f0ffff;
 }
 
 .panelitems {
@@ -138,7 +138,7 @@ ul.langitem li.descr {
 	overflow: hidden;
 }
 ul.langitem li a {
-	color: #fdc073;
+	color: #f0ffff;
 	text-decoration: none;
 	font-size: 20px;
 }

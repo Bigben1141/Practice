@@ -16,6 +16,26 @@ class AddActor(forms.ModelForm):
          'Bio':forms.Textarea(attrs={'cols':60, 'rows': 10}),
      }
 
+class AddStaging(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+     model = Staging
+     fields = ['Date']
+
+class AddPlay(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    class Meta:
+     model = Plays
+     fields = ['Title','Director','Author','Picture','About']
+     widgets = {
+         'About':forms.Textarea(attrs={'cols':60, 'rows': 10}),
+     }
+
+
 
 
 class Registration(UserCreationForm):

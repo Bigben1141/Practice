@@ -30,6 +30,7 @@ class Actors(DataMixin, ListView):
         return dict(list(context.items()) + list(c_def.items()))
 
 
+
 def addpage(request):
     if request.method=='POST':
         form=AddActor(request.POST,request.FILES)
@@ -43,6 +44,19 @@ def addpage(request):
         form = AddActor()
     return render(request, 'Theatre/addpage.html', {'form': form, 'menu': menu, 'title': 'О сайте'})
 
+
+def addplay(request):
+    if request.method=='POST':
+        form=AddPlay(request.POST,request.FILES)
+        if form.is_valid():
+            try:
+                form.save()
+                return redirect('home')
+            except:
+                form.add_error(None, 'Ошибочка')
+    else:
+        form = AddPlay()
+    return render(request, 'Theatre/addplay.html', {'form': form, 'menu': menu, 'title': 'О сайте'})
 
 
 def pageNotFound(request, exception):
